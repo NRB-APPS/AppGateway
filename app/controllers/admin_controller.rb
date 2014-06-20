@@ -1,4 +1,10 @@
 class AdminController < ApplicationController
+
+  def index
+		@title = "Adminstration"
+		@icon = "/image/admin.jpg"
+  end
+
   def user_list
   end
 

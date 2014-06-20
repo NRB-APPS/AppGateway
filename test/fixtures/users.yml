@@ -1,23 +1,36 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  user_id: 
-  username: MyString
-  password: MyString
-  salt: MyString
-  first_name: MyString
-  last_name: MyString
-  date_created: 2014-06-19 16:31:18
-  status: MyString
-  role: MyString
-
-two:
-  user_id: 
-  username: MyString
-  password: MyString
-  salt: MyString
-  first_name: MyString
-  last_name: MyString
-  date_created: 2014-06-19 16:31:18
-  status: MyString
-  role: MyString
+mikmck:
+  user_id: 1
+  username: mikmck
+  salt: laWkLAw6QB
+  password: 904bf83b60c821aacc43d601b203b124a63fa08f # mike
+  date_created: <%= 1.days.ago.to_s :db %>
+  date_changed: <%= 1.days.ago.to_s :db %>
+  creator: 1
+  changed_by: 1
+  system_id: Baobab Admin
+  secret_question: nil
+  secret_answer: nil
+  person_id: 1
+  retired: 0
+  retired_by: nil
+  date_retired: nil
+  retire_reason: nil
+  uuid: 5850ff12-a3ec-11e0-9d8f-544249152fc0
+registration:
+  user_id: 2
+  username: registration
+  salt: laWkLAw6QB
+  password: 904bf83b60c821aacc43d601b203b124a63fa08f # mike
+  date_created: <%= 5.days.ago.to_s :db %>
+  date_changed: <%= 5.days.ago.to_s :db %>
+  creator: 1
+  changed_by: 1
+  system_id: Partners In Health Admin
+  secret_question: nil
+  secret_answer: nil
+  person_id: 1
+  retired: 0
+  retired_by: nil
+  date_retired: nil
+  retire_reason: nil
+  uuid: 5850ff12-a3ec-11e0-9d8f-544249152fc0
