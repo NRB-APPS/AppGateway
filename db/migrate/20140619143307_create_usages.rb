@@ -2,7 +2,7 @@ class CreateUsages < ActiveRecord::Migration
   def self.up
     create_table :usages do |t|
       t.primary :usage_id
-      t.application :references
+      t.integer :user_id
 
       t.timestamps
     end

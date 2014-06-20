@@ -5,6 +5,7 @@ class CreateApplications < ActiveRecord::Migration
       t.string :application_name
       t.string :url
       t.string :icon_link
+      t.integer :user_id
 
       t.timestamps
     end
