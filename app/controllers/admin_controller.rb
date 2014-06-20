@@ -2,7 +2,7 @@ class AdminController < ApplicationController
 
   def index
 		@title = "Adminstration"
-		@icon = "/image/admin.jpg"
+		@icon = "settings.png"
   end
 
   def user_list
