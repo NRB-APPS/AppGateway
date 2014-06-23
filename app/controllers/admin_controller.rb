@@ -22,5 +22,11 @@ class AdminController < ApplicationController
 
   def change_role
   end
-
+  
+  def applications
+		@all_app = Application.find(:all, :limit => 6)
+		
+		@title = "Adminstration"
+		@icon = "settings.png"
+  end
 end

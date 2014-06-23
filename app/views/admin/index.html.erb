@@ -82,8 +82,25 @@
 		function gatewayCancel(){
 			window.location = '/home';
 		}
-		
+
+		function validateInput(){
+			var failed = false;
+			inputs =  document.getElementsByClassName("inputs")
+			for (i = 0; i < inputs.length; i++){
+                if (inputs[i].value.length < 1)	{
+					failed = true;
+				}		
+			}
+			if (failed == false){
+				gatewaySubmit()
+			}
+			else {
+				return
+			}
+		}
+
 		function gatewaySubmit(){
+			
 			var form = document.createElement('form');
             form.action = '/admin/login';
 			form.method = 'post'
@@ -96,6 +113,7 @@
 			document.body.appendChild(form)
 			document.getElementById('frm').submit();
 		}
+
 	</script>
 </head>
 
@@ -140,7 +158,7 @@
 				</div>
 				<div id='bottom'>
 					<button id='btn_cancel' class='buttons'  onmousedown='gatewayCancel()'>Cancel </button>
-					<button id='btn_finish' class='buttons' style='float: right;'  onmousedown='gatewaySubmit()'>Login </button>
+					<button id='btn_finish' class='buttons' style='float: right;'  onmousedown='validateInput();'>Login </button>
 				</div>
     </div>
 </body>
