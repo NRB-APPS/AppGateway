@@ -13,6 +13,10 @@ class AdminController < ApplicationController
   def login
 		@title = "Adminstration"
 		@icon = "settings.png"
+		if request.post?
+			user = User.check_authenticity(params[:password], params[:username]) #raise params.to_yaml
+			#raise user.to_yaml
+		end
   end
 
   def change_password
