@@ -53,6 +53,7 @@
                  font-size:28px;
                  font-family:arial, helvetica, sans-serif; 
                  padding: 10px 10px 10px 10px; 
+				 margin-left:10px;
                  text-decoration:none; 
                  display:inline-block;
                  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
@@ -77,30 +78,17 @@
 			-webkit-border-radius: 5px;
           	border-radius: 5px;	
 		}
+		#applications{
+		 	height: 100px;
+		 	overflow: auto;
+		}
 	</style>
 	<script>
 		function gatewayCancel(){
 			window.location = '/home';
 		}
-
-		function validateInput(){
-			var failed = false;
-			inputs =  document.getElementsByClassName("inputs")
-			for (i = 0; i < inputs.length; i++){
-                if (inputs[i].value.length < 1)	{
-					failed = true;
-				}		
-			}
-			if (failed == false){
-				gatewaySubmit()
-			}
-			else {
-				return
-			}
-		}
-
+		
 		function gatewaySubmit(){
-			
 			var form = document.createElement('form');
             form.action = '/admin/login';
 			form.method = 'post'
@@ -113,7 +101,6 @@
 			document.body.appendChild(form)
 			document.getElementById('frm').submit();
 		}
-
 	</script>
 </head>
 
@@ -124,7 +111,7 @@
 							<table align="right" height='100%'>
 								<tr height='100%'>
 									<td align='right' id='title'>
-											<%= @title %>: Login
+											<%= @title %>: Configuration
 									</td>
 									<td align='right' id='icon'>
 											<%= image_tag(@icon,:class=>"logo")%>	
@@ -135,30 +122,53 @@
 						
 				</div>
 				<div id='middle'>
-						<div id='input_area'>
-							<table align="center"  height='100%' width='70%'>
-								<tr>
+						
+							<table align="center"  height='100%' width='98%'>
+								<thead>
+								 <tr valign='top'>
 									<td align='left' id='text' width='40%'>
-											Username
+											Application Name
 									</td>
 									<td  width='40%'>
-											<input class='inputs' type='text' name='username'>
+											URL
 									</td>
-								</tr>
-								<tr>
+								
 									<td align='left' id='text'>
-											Password
+											Icon Upload
 									</td>
 									<td width='40%'>
-											<input class='inputs' type='password' name='password'>
+										   Icon
 									</td>
 								</tr>
+								</thead>
+								<tbody id='applications'>
+								<% (@all_app || []).each{|app|%>
+								  <tr valign='top'>
+									<td align='left' id='text'>
+											<input class='inputs' type='text' name='app[<%= app.id%>]["name"]' value='<%= app.application_name -%>'>
+									</td>
+									<td>
+											<input class='inputs' type='text' name='app[<%= app.id%>]["url"]' value='<%= app.url -%>'>
+									</td>
+								
+									<td id='text'>
+											Icon Upload
+									</td>
+									<td >
+										   <%= image_tag(app.icon_link,:class=>"logo")%>
+									</td>
+								</tr>
+								<% }%>
+								</tbody>
+								
 							</table>
-						</div>
+						
 				</div>
 				<div id='bottom'>
-					<button id='btn_cancel' class='buttons'  onmousedown='gatewayCancel()'>Cancel </button>
-					<button id='btn_finish' class='buttons' style='float: right;'  onmousedown='validateInput();'>Login </button>
+					<button id='btn_cancel' class='buttons'  onmousedown='gatewayCancel()'>Logout </button>
+					<button id='btn_finish' class='buttons' style='float: right;'  onmousedown='gatewaySubmit()'>Save </button>
+					<button id='btn_user' class='buttons' style='float: right;'  onmousedown='window.location="/admin/user_list"'>Users </button>
+					
 				</div>
     </div>
 </body>

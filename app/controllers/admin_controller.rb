@@ -1,6 +1,8 @@
 class AdminController < ApplicationController
 
   def index
+		@all_app = Application.find(:all, :limit => 6)
+		
 		@title = "Adminstration"
 		@icon = "settings.png"
   end
@@ -9,6 +11,8 @@ class AdminController < ApplicationController
   end
 
   def login
+		@title = "Adminstration"
+		@icon = "settings.png"
   end
 
   def change_password
@@ -23,10 +27,4 @@ class AdminController < ApplicationController
   def change_role
   end
   
-  def applications
-		@all_app = Application.find(:all, :limit => 6)
-		
-		@title = "Adminstration"
-		@icon = "settings.png"
-  end
 end
