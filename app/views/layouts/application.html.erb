@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Applications Portal</title>
+    <style>
+      body {
+        margin: 10px;
+        -moz-user-select: none;
+        overflow: hidden;
+        font-family: "Nimbus Sans L", "Arial Narrow", sans-serif;
+      }
+      
+      .table {
+        display: table;
+      }
+      
+      .row {
+        display: table-row;
+      }
+      
+      .cell {
+        display: table-cell;
+      }
+      
+    </style>
+  </head>
+  <body onresize="resize()" onload="resize()">
+    <div id="main" style="border: 1px solid #000; overflow: auto; padding: 0px;">
+    
+      <%= yield %>
+      
+    </div>
+    <script>
+      <!--
+      
+      function __$(id){
+        return document.getElementById(id);
+      }
+      
+      function resize(){
+        if(__$("main")){
+          __$("main").style.height = (window.innerHeight - 20) + "px";
+        }
+      }
+      
+      //-->
+    </script>
+  </body>
+</html>
