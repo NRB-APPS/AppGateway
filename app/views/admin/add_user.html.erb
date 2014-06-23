@@ -43,6 +43,19 @@
 			-webkit-border-radius: 5px;
           	border-radius: 5px;	
 		}
+
+	option {
+    font-size: 14px;
+    padding: 5px;
+}
+
+	select {height: 5em;
+			width: 100%;
+			border-color: lightblue;
+			font-size: 25;	
+			-webkit-border-radius: 5px;
+          	border-radius: 5px;	
+	}
 	.buttons{
 			    border:1px solid #34740e; 
                  -webkit-border-radius: 3px; 
@@ -114,6 +127,17 @@
 									</td>
 									<td  width='40%'>
 											<input class='inputs' type='text' name='user[username]'>
+									</td>
+								</tr>
+								<tr>
+									<td align='left' id='text'>
+											Password
+									</td>
+									<td width='40%'><select class='select' size=2 name='user[status]'>
+											<option value='ACTIVE'>ACTIVE</option>
+											<option value='BLOCKED'>BLOCKED</option>
+											</select>
+											<input id='pass' class='inputs' type='password' name='user[password]'>
 									</td>
 								</tr>
 								<tr>

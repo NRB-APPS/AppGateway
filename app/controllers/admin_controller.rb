@@ -25,6 +25,7 @@ class AdminController < ApplicationController
 		@user.update_attributes(:first_name => params[:user][:first_name]) if !params[:user][:first_name].blank?
 		@user.update_attributes(:last_name => params[:user][:last_name]) if !params[:user][:last_name].blank?
 		@user.update_attributes(:username => params[:user][:username]) if !params[:user][:username].blank?
+		@user.update_attributes(:status => params[:user][:status]) if !params[:user][:status].blank?
 		redirect_to "/admin/user_list?user_id=#{params[:user_id]}"
 	end
   end
