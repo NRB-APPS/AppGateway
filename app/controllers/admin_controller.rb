@@ -8,13 +8,14 @@ class AdminController < ApplicationController
   end
 
   def user_list
+	@user = User.find(:all)
   end
 
   def login
 		@title = "Adminstration"
 		@icon = "settings.png"
 		if request.post?
-			user = User.check_authenticity(params[:password], params[:username]) #raise params.to_yaml
+			user = User.authenticite(params[:username], params[:password]) #raise params.to_yaml
 			#raise user.to_yaml
 		end
   end
@@ -23,6 +24,16 @@ class AdminController < ApplicationController
   end
 
   def add_user
+    if request.post?
+		#raise params.to_yaml
+		#params[:user][:password] = params[:user][:plain_password]
+		#params[:user][:plain_password] = nil
+		#person = Person.create()
+		#person.names.create(params[:person_name])
+		#params[:user][:user_id] = nil
+		@user = User.new(params[:user])
+		@user.save
+	end
   end
 
   def block_user
