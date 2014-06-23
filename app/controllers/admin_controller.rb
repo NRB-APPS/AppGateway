@@ -1,22 +1,30 @@
 class AdminController < ApplicationController
 
   def index
-		@all_app = Application.find(:all, :limit => 6)
-		
-		@title = "Adminstration"
-		@icon = "settings.png"
+		#raise params.to_yaml
+		if params[:user_id].blank?
+			redirect_to "/admin/login" and return
+		else
+			@user = User.find(params[:user_id]) rescue []
+			redirect_to "/admin/login" and return if @user.blank?
+			@all_app = Application.find(:all, :limit => 6)	
+			@title = "Adminstration"
+			@icon = "settings.png"
+		end
   end
 
   def user_list
-	@user = User.find(:all)
+	@users = User.find(:all)
   end
 
   def login
 		@title = "Adminstration"
 		@icon = "settings.png"
 		if request.post?
-			user = User.authenticite(params[:username], params[:password]) #raise params.to_yaml
-			#raise user.to_yaml
+			user = User.authenticate(params[:username], params[:password]) 
+			if !user.blank?
+			redirect_to "/admin/index?user_id=#{user.id}"
+			end
 		end
   end
 
@@ -33,6 +41,7 @@ class AdminController < ApplicationController
 		#params[:user][:user_id] = nil
 		@user = User.new(params[:user])
 		@user.save
+		redirect_to "/admin/user_list"
 	end
   end
 

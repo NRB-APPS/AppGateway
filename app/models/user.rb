@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   set_table_name :users
-  set_primary_key :user_id
+  set_primary_key :id
     
   def before_create
     self.salt = User.random_string(10) if !self.salt?

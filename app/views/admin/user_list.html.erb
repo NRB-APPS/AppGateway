@@ -17,8 +17,8 @@
   .button {
     border: 1px solid #3465a4;
     border-radius: 15px;
-    width: 180px;
-    height: 150px;
+    width: 100px;
+    height: 50px;
     float: left;
     margin: 10px;
     cursor: pointer;
@@ -82,26 +82,24 @@
   
     <div class="row">
     
-       <table align="center"  height='100%' width='98%'>
-								<thead>
-								 <tr valign='top'>
+       <table align="center"  height='100px' width='98%' style='overflow:auto;'>
+								 <tr valign='top' style='background_color:lightblue;color:black;'>
 									<td>
 											User
 									</td>
 									<td>
-											username
+											Username
 									</td>
 								
 									<td>
-											status
+											Status
 									</td>
 								</tr>
-								</thead>
-								<tbody id='applications'>
+							
 								<% (@users || []).each{|user|%>
 								  <tr valign='top'>
 									<td>
-											<%= user.first_name %> <%= user.lastname %>
+											<%= user.first_name %> <%= user.last_name %>
 									</td>
 									<td>
 											<%= user.username %>
@@ -109,6 +107,9 @@
 								
 									<td>
 											<%= user.status %>
+									</td>
+									<td>
+										 <button id='<%= user.id %>' class='button' style='float: right;'  onmousedown='window.location = "/admin/edit_user?<%= user.id%>&user_id=<%= params[:user_id]%>"'> Edit </button>
 									</td>
 								</tr>
 								<% }%>
@@ -126,7 +127,10 @@
         </div>
         
 		<div style="font-size: 22px; color: #3465a4; padding-right: 15px; float: right;">
-          <button id='btn_finish' class='buttons' style='float: right;'  onmousedown='window.location = "/admin/add_user"'>New User </button>
+          <button id='btn_finish' class='buttons' style='float: right;'  onmousedown='window.location = "/admin/index?user_id=<%= params[:user_id]%>"'>Finish </button>
+        </div>
+		<div style="font-size: 22px; color: #3465a4; padding-right: 15px; float: right;">
+          <button id='btn_finish' class='buttons' style='float: right;'  onmousedown='window.location = "/admin/add_user?user_id=<%= params[:user_id]%>"'>New User </button>
         </div>
       </div>
     
