@@ -167,7 +167,7 @@
 				<div id='bottom'>
 					<button id='btn_cancel' class='buttons'  onmousedown='gatewayCancel()'>Logout </button>
 					<button id='btn_finish' class='buttons' style='float: right;'  onmousedown='gatewaySubmit()'>Save </button>
-					<button id='btn_user' class='buttons' style='float: right;'  onmousedown='window.location="/admin/user_list"'>Users </button>
+					<button id='btn_user' class='buttons' style='float: right;'  onmousedown='window.location="/admin/user_list?user_id=<%= params[:user_id]%>"'>Users </button>
 					
 				</div>
     </div>

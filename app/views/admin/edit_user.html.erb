@@ -17,8 +17,8 @@
   .button {
     border: 1px solid #3465a4;
     border-radius: 15px;
-    width: 100px;
-    height: 50px;
+    width: 180px;
+    height: 150px;
     float: left;
     margin: 10px;
     cursor: pointer;
@@ -35,6 +35,26 @@
   .button:active {
     background-color: #f3e7c0;
   }
+	input {
+			height: 2em;
+			width: 100%;
+			border-color: lightblue;
+			font-size: 25;	
+			-webkit-border-radius: 5px;
+          	border-radius: 5px;	
+		}
+	option {
+    font-size: 14px;
+    padding: 5px;
+}
+
+	select {height: 6em;
+			width: 100%;
+			border-color: lightblue;
+			font-size: 25;	
+			-webkit-border-radius: 5px;
+          	border-radius: 5px;	
+	}
 	.buttons{
 			    border:1px solid #34740e; 
                  -webkit-border-radius: 3px; 
@@ -82,38 +102,60 @@
   
     <div class="row">
     
-       <table align="center"  height='100px' width='98%' style='overflow:auto;'>
-								 <tr valign='top' style='background_color:lightblue;color:black;'>
-									<td>
-											User
+       <table align="center"  height='100%' width='98%'>
+							<form id='frm' method='post' action='/admin/edit_user?user_id=<%= params[:user_id]%>&person=<%= params[:person]%>'>
+								<tr>
+									<td align='left' id='text' width='40%'>
+											First name
 									</td>
-									<td>
+									<td  width='40%'>
+											<input class='inputs' type='text' name='user[first_name]' value='<%= @user.first_name%>'>
+									</td>
+								</tr>
+								<tr>
+									<td align='left' id='text'>
+											Last Name
+									</td>
+									<td width='40%'>
+											<input class='inputs' type='text' name='user[last_name]' value='<%= @user.last_name%>'>
+									</td>
+								</tr>
+								<tr>
+									<td align='left' id='text' width='40%'>
 											Username
 									</td>
-								
-									<td>
-											Status
+									<td  width='40%'>
+											<input class='inputs' type='text' name='user[username]' value='<%= @user.username%>'>
 									</td>
 								</tr>
-							
-								<% (@users || []).each{|user|%>
-								  <tr valign='top'>
-									<td>
-											<%= user.first_name %> <%= user.last_name %>
+								<tr>
+									<td align='left' id='text'>
+											Password
 									</td>
-									<td>
-											<%= user.username %>
-									</td>
-								
-									<td>
-											<%=  user[:status] %>
-									</td>
-									<td>
-										 <button id='<%= user.id %>' class='button' style='float: right;'  onmousedown='window.location = "/admin/edit_user?person=<%= user.id%>&user_id=<%= params[:user_id]%>"'> Edit </button>
+									<td width='40%'>
+											<input id='pass' class='inputs' type='password' name='user[password]'>
 									</td>
 								</tr>
-								<% }%>
-								</tbody>
+								<tr>
+									<td align='left' id='text'>
+											Password
+									</td>
+									<td width='40%'><select class='select' size=2 name='user[status]'>
+											<option value='ACTIVE'>ACTIVE</option>
+											<option value='BLOCKED'>BLOCKED</option>
+											</select>
+											<input id='pass' class='inputs' type='password' name='user[password]'>
+									</td>
+								</tr>
+								<tr id='hide_pass' style='display:none;'>
+									<td align='left' id='text'>
+											Confirm Password
+									</td>
+									<td width='40%'>
+											<input  class='inputs' type='password' name='confirm_password'>
+									</td>
+								</tr>
+								</form>
 					</table>
     
     </div>
@@ -122,15 +164,12 @@
     
       <div class="cell" style="height: 50px; border-top: 1px solid #3465a4; vertical-align: middle;">
         
-        <div style="font-size: 22px; color: #3465a4; padding-left: 15px; float: left; vertical-align: middle; margin-top: 10px;">
-          Applications Portal
+        <div style="font-size: 22px; color: #3465a4; padding-right: 15px; float: left;">
+          <button id='btn_finish' class='buttons' style='float: left;'  onmousedown='window.location = "/admin/user_list?user_id=<%= params[:user_id]%>"'>Cancel </button>
         </div>
         
 		<div style="font-size: 22px; color: #3465a4; padding-right: 15px; float: right;">
-          <button id='btn_finish' class='buttons' style='float: right;'  onmousedown='window.location = "/admin/index?user_id=<%= params[:user_id]%>"'>Finish </button>
-        </div>
-		<div style="font-size: 22px; color: #3465a4; padding-right: 15px; float: right;">
-          <button id='btn_finish' class='buttons' style='float: right;'  onmousedown='window.location = "/admin/add_user?user_id=<%= params[:user_id]%>"'>New User </button>
+          <button id='btn_finish' class='buttons' style='float: right;'  onmousedown='validateInput();'>Done </button>
         </div>
       </div>
     
@@ -140,4 +179,26 @@
 
 </div>
 
+<script>
+	function gatewayCancel(){
+			window.location = '/home';
+		}
+		
+		function confirmPassword(){
+		 if (document.getElementById('pass').value.length > 0 ){
+			  document.getElementById('hide_pass').style.display = 'inline'			
+			}		
+			else{
+			document.getElementById('hide_pass').style.display = 'none'
+			}
+		}
+		function validateInput(){
+				gatewaySubmit()
+		}
 
+		function gatewaySubmit(){
+		
+			
+			document.getElementById('frm').submit();
+		}
+</script>
