@@ -91,13 +91,13 @@
     <div class="row">
     
        <table align="center"  height='100%' width='98%'>
-							<form id='frm' method='post' action='/admin/user_list?user_id=<%= params[:user_id]%>'>
+							<form id='frm' method='post' action='/admin/edit_user?user_id=<%= params[:user_id]%>&person=<%= params[:person]%>'>
 								<tr>
 									<td align='left' id='text' width='40%'>
 											First name
 									</td>
 									<td  width='40%'>
-											<input class='inputs' type='text' name='user[first_name]'>
+											<input class='inputs' type='text' name='user[first_name]' value='<%= @user.first_name%>'>
 									</td>
 								</tr>
 								<tr>
@@ -105,7 +105,7 @@
 											Last Name
 									</td>
 									<td width='40%'>
-											<input class='inputs' type='text' name='user[last_name]'>
+											<input class='inputs' type='text' name='user[last_name]' value='<%= @user.last_name%>'>
 									</td>
 								</tr>
 								<tr>
@@ -113,7 +113,7 @@
 											Username
 									</td>
 									<td  width='40%'>
-											<input class='inputs' type='text' name='user[username]'>
+											<input class='inputs' type='text' name='user[username]' value='<%= @user.username%>'>
 									</td>
 								</tr>
 								<tr>
@@ -121,15 +121,15 @@
 											Password
 									</td>
 									<td width='40%'>
-											<input class='inputs' type='password' name='user[password]'>
+											<input id='pass' class='inputs' type='password' name='user[password]'>
 									</td>
 								</tr>
-								<tr>
+								<tr id='hide_pass' style='display:none;'>
 									<td align='left' id='text'>
 											Confirm Password
 									</td>
 									<td width='40%'>
-											<input class='inputs' type='password' name='confirm_password'>
+											<input  class='inputs' type='password' name='confirm_password'>
 									</td>
 								</tr>
 								</form>
@@ -160,21 +160,17 @@
 	function gatewayCancel(){
 			window.location = '/home';
 		}
-
+		
+		function confirmPassword(){
+		 if (document.getElementById('pass').value.length > 0 ){
+			  document.getElementById('hide_pass').style.display = 'inline'			
+			}		
+			else{
+			document.getElementById('hide_pass').style.display = 'none'
+			}
+		}
 		function validateInput(){
-			var failed = false;
-			inputs =  document.getElementsByClassName("inputs")
-			for (i = 0; i < inputs.length; i++){
-                if (inputs[i].value.length < 1)	{
-					failed = true;
-				}		
-			}
-			if (failed == false){
 				gatewaySubmit()
-			}
-			else {
-				return
-			}
 		}
 
 		function gatewaySubmit(){

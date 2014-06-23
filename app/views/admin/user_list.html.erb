@@ -109,7 +109,7 @@
 											<%= user.status %>
 									</td>
 									<td>
-										 <button id='<%= user.id %>' class='button' style='float: right;'  onmousedown='window.location = "/admin/edit_user?<%= user.id%>&user_id=<%= params[:user_id]%>"'> Edit </button>
+										 <button id='<%= user.id %>' class='button' style='float: right;'  onmousedown='window.location = "/admin/edit_user?person=<%= user.id%>&user_id=<%= params[:user_id]%>"'> Edit </button>
 									</td>
 								</tr>
 								<% }%>
