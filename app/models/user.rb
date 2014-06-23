@@ -1,6 +1,6 @@
 require 'digest/sha1'
 
-class CoreUser < ActiveRecord::Base
+class User < ActiveRecord::Base
   set_table_name :users
   set_primary_key :user_id
     
