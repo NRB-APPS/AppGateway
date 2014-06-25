@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   set_table_name :users
   set_primary_key :id
     
+	attr :plain_password
+	attr_accessor :plain_password
+	
   def before_create
     self.salt = User.random_string(10) if !self.salt?
     self.password = encrypt(self.password, self.salt) #if self.plain_password
@@ -129,7 +132,7 @@ class User < ActiveRecord::Base
 
   def before_update
     self.salt = User.random_string(10) if !self.salt?
-    self.password = encrypt(self.password, self.salt) #if self.plain_password
+    self.password = encrypt(self.plain_password, self.salt) if self.plain_password
   end
 
   def superuser?

@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.datetime :date_created
-      t.string :status
+      t.string :user_status
       t.string :role
 
       t.timestamps
