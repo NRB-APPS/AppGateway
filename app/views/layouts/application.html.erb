@@ -415,7 +415,31 @@
                       cell.appendChild(button);
                   }
               }
+              
+              if(__$("keyboard")){
+              
+                // [w, h, t, l]
+                var kpos = checkCtrl(__$("keyboard"));
+                var w = window.innerWidth;
+                var h = window.innerHeight;
+                
+                if(kpos[0] + kpos[3] > w){
+                  
+                  __$("keyboard").style.left = (w - kpos[0] - 10) + "px";
+                  
+                }                
+                
+                if(kpos[1] + kpos[2] > h){
+                  
+                  __$("keyboard").style.top = (pos[2] - kpos[1] - 2) + "px";
+                  
+                }                
+                
+              }
+              
           }
+          
+          
       }          
      
       //-->
