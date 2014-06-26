@@ -1,8 +1,8 @@
 production:
-  installation: Production
+  site: Facility Name
 
 development:
-  installation: Development
+  site: Facility Name
 
 test:
-  installation: Test
+  site: Facility Name
