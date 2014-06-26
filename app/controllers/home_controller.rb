@@ -22,12 +22,20 @@ class HomeController < ApplicationController
     
     Application.find(:all, :limit => "#{startpos},#{pagesize}").each do |app|
     
-      apps[app.application_name] = [app.url, app.icon_link]
+      apps[app.application_name] = [app.url, app.icon_link, app.id]
     
     end
     
     render :json => apps.to_json
     
+  end
+
+  def log_app
+  
+    Frequency.create(:application => params["id"], :client => request.remote_ip) rescue nil
+    
+    render :text => "Logged!"
+  
   end
 
 end

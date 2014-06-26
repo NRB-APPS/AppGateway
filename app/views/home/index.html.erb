@@ -176,6 +176,33 @@
     tmr = setTimeout("resizeButtons()", 200)
   }
   
+  
+  function ajaxLogApp(id, path){
+     
+     var url = "/home/log_app/" + id;
+     
+     var httpRequest = new XMLHttpRequest();
+      httpRequest.onreadystatechange = function() {
+          handleLogApp(httpRequest, path);
+      };
+      try {
+          httpRequest.open('GET', url, true);
+          httpRequest.send(null);
+      } catch(e){
+      }
+  }
+
+  function handleLogApp(aXMLHttpRequest, path) {
+    if (!aXMLHttpRequest) return;                    
+
+    if (aXMLHttpRequest.readyState == 4 && (aXMLHttpRequest.status == 200 || 
+          aXMLHttpRequest.status == 304)) {
+           
+      window.location = path;
+      
+    }
+  }
+  
   function ajaxButtons(page){
      
      var url = "/home/ajax_links?page=" + page;
@@ -240,8 +267,12 @@
         
         __$("btn" + order[k]).setAttribute("link", result[keys[k]][0]);
         
+        __$("btn" + order[k]).setAttribute("appid", result[keys[k]][2]);
+        
         __$("btn" + order[k]).onclick = function(){
-          window.location = this.getAttribute("link");
+        
+          ajaxLogApp(this.getAttribute("appid"), this.getAttribute("link"));
+          
         }
         
       }
