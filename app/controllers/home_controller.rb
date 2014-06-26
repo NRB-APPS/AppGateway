@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  def index    
+  def index  
+    @site = YAML.load_file("#{Rails.root}/config/settings.yml")[Rails.env]["site"] rescue "Facility Name" 
   end
   
   def ajax_links
