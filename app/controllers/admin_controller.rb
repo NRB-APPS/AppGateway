@@ -206,6 +206,18 @@ class AdminController < ApplicationController
     
       if params["values"]["id"].strip.downcase == "new"
     
+        if params["values"]["username"].blank?
+        
+          render :json => {:error => "Username can't be blank!"}.to_json and return
+        
+        end
+    
+        if !User.find_by_username(params["values"]["username"]).blank?
+        
+          render :json => {:error => "Username already taken!"}.to_json and return
+        
+        end
+    
         user = User.create(:first_name => params["values"]["first_name"], :last_name => params["values"]["last_name"], :role => params["values"]["role"], :user_status => params["values"]["status"], :username => params["values"]["username"]) rescue nil
     
       else
@@ -224,7 +236,7 @@ class AdminController < ApplicationController
     
     end
   
-    render :text => (user.id rescue nil)
+    render :json => {:success => (user.id rescue nil)}.to_json
   
   end
 

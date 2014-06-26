@@ -230,25 +230,33 @@
 
     if (aXMLHttpRequest.readyState == 4 && aXMLHttpRequest.status == 200) {
                   
-        var result = aXMLHttpRequest.responseText;
+        var result = JSON.parse(aXMLHttpRequest.responseText);
         
-        delete trackText[appid]
+        if(result["error"]){
         
-        __$("void" + appid).setAttribute("src", imgUnTick);
+          alert(result["error"]);
         
-        __$("void" + appid).onmousedown = function(){
-                  
-            if(confirm("Do you really want to delete this entry?")){
-            
-              window.location = "/admin/void_user/" + this.getAttribute("appid");
-            
-            }               
-        
-        }
-        
-        if(String(appid).trim().toLowerCase() == "new"){
-        
-          renameFields(result);
+        } else {
+          
+          delete trackText[appid]
+          
+          __$("void" + appid).setAttribute("src", imgUnTick);
+          
+          __$("void" + appid).onmousedown = function(){
+                    
+              if(confirm("Do you really want to delete this entry?")){
+              
+                window.location = "/admin/void_user/" + this.getAttribute("appid");
+              
+              }               
+          
+          }
+          
+          if(String(appid).trim().toLowerCase() == "new"){
+          
+            renameFields(result["success"]);
+          
+          }
         
         }
           
