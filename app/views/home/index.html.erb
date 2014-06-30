@@ -36,6 +36,10 @@
     background-color: #f3e7c0;
   }
 
+  #pageTitle:hover {
+    color: #999 !important;
+  }
+
 </style>
 <div style="width: 100%; height: 100%; border: none;">
 
@@ -47,7 +51,7 @@
         
         <div class="table" style="float: right">
           <div class="row">
-            <div id="pageTitle" class="cell" style="font-size: 42px; color: #3465a4; text-align: right; vertical-align: middle; padding-right: 20px;">
+            <div id="pageTitle" class="cell" style="font-size: 42px; color: #3465a4; text-align: right; vertical-align: middle; padding-right: 20px; cursor: pointer;" onclick="window.location='/admin/index'">
               <%= @site %>
             </div>
             <div class="cell" style="font-size: 42px; color: #3465a4; text-align: right; vertical-align: middle; padding-right: 20px;">
@@ -66,7 +70,7 @@
         
         <div id="links" style="height: 100%; border: none; overflow: auto;">
         
-          <div class="table" style="margin: auto; margin-top: 60px;">
+          <div class="table" style="margin: auto; margin-top: 40px;">
           
             <div class="row">
               <div class="cell">
@@ -116,7 +120,7 @@
               </div>
             </div>
           
-            <div class="row">
+            <!--div class="row">
               <div class="cell" style="padding-top: 10px;">
                 <div class="button" style="float: none; margin: auto; vertical-align: middle; text-align: center;" onclick="window.location='/admin/index'">
                   <img src="/images/settings.png" height="80" alt="Admin" style="margin: 10px;" />
@@ -125,7 +129,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div-->
             
           </div>
         
