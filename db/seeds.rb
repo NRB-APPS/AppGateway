@@ -56,6 +56,17 @@ apps = [
       :url  => "http://appserver/u5",
       :icon => "u5.png",
       :user => (User.first.id rescue 1)
+    },{
+      :name => "eBRS",
+      :url  => "http://localhost:3002",
+      :icon => "born.png",
+      :user => (User.first.id rescue 1)
+    },
+    {
+      :name => "eDRS",
+      :url  => "http://localhost:3000",
+      :icon => "death.png",
+      :user => (User.first.id rescue 1)
     }
   ]
   
