@@ -678,11 +678,15 @@
         
         row.appendChild(cell);
         
-        if(fields[j] == "upload"){        
-          
+        if(fields[j] == "upload"){
           cell.innerHTML = "&nbsp;";
-          
+          /*var button = document.createElement("button");
+          button.innerHTML = "Upload";
+          button.id ="upload_button";
+          button.className = "blue";
+          cell.appendChild(button) */
           cell.id = "newUpload";
+
         
         } else if(fields[j] == "icon_url"){
         

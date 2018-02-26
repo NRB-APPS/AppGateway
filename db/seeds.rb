@@ -57,14 +57,44 @@ apps = [
       :icon => "u5.png",
       :user => (User.first.id rescue 1)
     },{
-      :name => "eBRS",
-      :url  => "http://localhost:3002",
+      :name => "eBRS Facility",
+      :url  => "http://appserver/ebrs",
       :icon => "born.png",
       :user => (User.first.id rescue 1)
     },
     {
-      :name => "eDRS",
-      :url  => "http://localhost:3000",
+      :name => "eDRS Facility",
+      :url  => "http://appserver/edrs",
+      :icon => "death.png",
+      :user => (User.first.id rescue 1)
+    },
+    {
+      :name => "HTS",
+      :url  => "http://appserver/hts",
+      :icon => "hts.png",
+      :user => (User.first.id rescue 1)
+    },
+    {
+      :name => "VMMC",
+      :url  => "http://appserver/vmmc",
+      :icon => "vmmc.png",
+      :user => (User.first.id rescue 1)
+    },
+    {
+      :name => "EVR",
+      :url  => "http://appserver/evr",
+      :icon => "village.png",
+      :user => (User.first.id rescue 1)
+    },
+    {
+      :name => "eBRS DC",
+      :url  => "http://appserver/ebrsdc",
+      :icon => "born.png",
+      :user => (User.first.id rescue 1)
+    },
+    {
+      :name => "eDRS DC",
+      :url  => "http://appserver/edrsdc",
       :icon => "death.png",
       :user => (User.first.id rescue 1)
     }
