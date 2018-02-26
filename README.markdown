@@ -30,4 +30,4 @@ MySQL version 5 or above
 4.  Editing application name and url 
     **  Click the application name
     **  login as usename: admin , password:test
-    **  Edit names and url for the applications
+    **  Edit names and url for the applications .ie name => ANC , url => http://192.168.12.8:4004
