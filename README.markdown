@@ -22,7 +22,8 @@ MySQL version 5 or above
 
 2.  Database creation
     **  Run the following command
-          bundle exec rake db:drop db:create db:migrate db:seed 
+          bundle exec rake db:drop db:create
+	  mysql -u root -p DB_NAME < db/default.sql 
 
 3.  Running the application
     **  ./script/server -p PORT_NUMBER
